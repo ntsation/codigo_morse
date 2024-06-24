@@ -19,7 +19,8 @@ def morse_para_texto(morse_code):
     texto_traduzido = ''
     for palavra in palavras:
         letras_morse = palavra.split()
-        palavra_traduzida = ''.join([texto_dict.get(letra, '') for letra in letras_morse])
+        palavra_traduzida = ''.join(
+            [texto_dict.get(letra, '') for letra in letras_morse])
         texto_traduzido += palavra_traduzida + ' '
 
     return texto_traduzido.strip()
@@ -39,7 +40,8 @@ def on_text_changed(*args):
 
 # Entrada para o código Morse
 morse_input = tk.StringVar()
-morse_input.trace("w", on_text_changed)  # Chama a função quando o texto é modificado
+# Chama a função quando o texto é modificado
+morse_input.trace("w", on_text_changed)
 
 # Elementos da GUI
 entrada_label = tk.Label(root, text="Código Morse:")
@@ -51,7 +53,8 @@ entrada.pack()
 resultado_label = tk.Label(root, text="Tradução:")
 resultado_label.pack()
 
-texto_output = tk.Label(root, text="", width=50, bg='white', fg='black', anchor='w')
+texto_output = tk.Label(root, text="", width=50,
+                        bg='white', fg='black', anchor='w')
 texto_output.pack()
 
 root.mainloop()  # Inicia o loop principal da GUI
